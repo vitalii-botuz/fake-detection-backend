@@ -1,0 +1,26 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      name: 'Warm up'
+    - duration: 300
+      arrivalRate: 50
+      name: 'Stress Test'
+scenarios:
+  - name: 'Users'
+    flow:
+      - get:
+          url: "/users/"
+  - name: 'Checks'
+    flow:
+      - get:
+          url: "/checks"
+  - name: 'Subs'
+    flow:
+      - get:
+          url: "/subscriptions/"
+  - name: 'Transactions'
+    flow:
+      - post:
+          url: "/transactions"
